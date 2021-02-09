@@ -1,0 +1,12 @@
+create external table student
+(STUDENT STRING,
+STUDENT_ID INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '|';
+
+insert into student values('SANJAY','001');
+
+pig -useHCatalog
+
+A = LOAD 'student' USING org.apache.hive.hcatalog.pig.HCatLoader(); 
+
+dump A;
